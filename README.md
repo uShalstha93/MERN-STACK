@@ -1,2 +1,2 @@
 # MERN-STACK
-hvc
+This is MERN Stack Training.
