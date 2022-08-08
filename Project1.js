@@ -8,18 +8,21 @@ const concatAndConvert = () => {
     let result;
     if ( num1 > 20 ) {
       result = "The number is greater than 20";
-      console.log(result.toUpperCase());
+      //console.log(result.toUpperCase());
       //console.log("The number is greater than 20");
+      return result/toUpperCase();
     }
     else if ( num1 < 20 ) {
       result = "The number is less than 20";
-      console.log(result.toUpperCase());
+      //console.log(result.toUpperCase());
       //console.log("The number is less than 20");
+      return result/toUpperCase();
     }
     else if ( num1 == 20 ) {
       result = "The number is equal to 20";
-      console.log(result.toUpperCase());
+      //console.log(result.toUpperCase());
       //console.log("The number is equal to 20");
+      return result/toUpperCase();
     }
   }
   checkIfGreaterThanTwenty(conCat);
