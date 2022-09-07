@@ -1,4 +1,4 @@
-debugger;
+// debugger;
 
 const firstName = ['Ram','Shyam','Hari','Laxman','Rakesh'];
 const lastName = {
