@@ -62,37 +62,70 @@ app.listen(port, () => {
 });
 
 app.post('/participants', async (req, res) => {
-    Users.create(req.body)
-    res.json({
-        LotteryDetail: req.body
-    })
+    try {
+        Users.create(req.body)
+        res.json({
+            message: "participants added!!",
+            LotteryDetail: req.body
+        })
+    }
+    catch (err) {
+        console.log(err)
+    }
 })
 
 app.get('/participants', async (req, res) => {
-    Users.find({}, (error, users) => {
-        if (error) {
-            res.send("something went wrong!!");
-            next();
-        }
-        res.json(users)
-    })
+    try {
+        Users.find({})
+        .then(result => {
+            res.json({
+                message: "Participants List",
+                detail: result
+            })
+        })
+        //other methods
+        // Users.find({}, (error, users) => {
+        //     if (error) {
+        //         res.send("something went wrong!!");
+        //         next();
+        //     }
+        //     res.json(users)
+        // })
+    }
+    catch (err) {
+        console.log(err)
+    }
 })
 
 app.put('/participants', async (req, res) => {
     // console.log(req.body)
-    Users.findOneAndUpdate({ name: req.body.name }, {
-        $set: { isWinner: true }
-    })
+    try {
+        Users.findOneAndUpdate({ name: req.body.name }, {
+            $set: { isWinner: true }
+        })
         .then(result => {
             res.json({
                 message: "info updated",
                 detail: result
             })
         })
-        .catch(err => {
-            // console.log(err)
-            res.json({
-                error: err
+    }
+    catch (err) {
+        console.log(err)
+    }
+})
+
+app.delete('/participants', async (req, res) => {
+    try {
+        Users.deleteOne({ name: req.body.name })
+            .then(result => {
+                res.json({
+                    message: "participant deleted",
+                    detail: result
+                })
             })
-        })
+    }
+    catch (err) {
+        console.log(err)
+    }
 })
